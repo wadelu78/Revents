@@ -1,11 +1,12 @@
 import React from 'react'
 import { Menu, Container, Button } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
-function Header() {
+function Header({ setFormOpen }) {
   return (
     <Menu inverted fixed='top'>
       <Container>
-        <Menu.Item header>
+        <Menu.Item as={NavLink} exact to='/' header>
           <img
             src='/assets/logo.png'
             alt='logo'
@@ -13,12 +14,12 @@ function Header() {
           />
           Revents
         </Menu.Item>
-        {/* why we add a menu here */}
-        <Menu name='Events' />
-        <Menu.Item>
+
+        <Menu.Item name='Events' as={NavLink} to='/events' />
+        <Menu.Item as={NavLink} to='/createEvent'>
           <Button positive inverted content='Create Event' />
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item position='right'>
           <Button basic inverted content='Login' />
           <Button
             basic
